@@ -1,7 +1,7 @@
 import asyncio
 import aiosqlite
 
-from config import DB_PATH
+from MathBot.config import DB_PATH
 
 
 async def init_db():

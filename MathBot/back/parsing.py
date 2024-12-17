@@ -2,7 +2,7 @@ from aiogram import Router, F
 
 from aiogram.types import Message
 
-from config import ADMIN_ID, GROUP_ID
+from MathBot.config import ADMIN_ID, GROUP_ID
 
 parse_router = Router()
 
@@ -17,9 +17,9 @@ async def parse(message: Message, bot):
 @parse_router.message(F.photo & F.text.regexp('(?i)Задача.+'))
 async def parse_image_text(message: Message, bot):
     print("Сообщение с изображением и текстом получено!")
-    
+
     text = message.caption if message.caption else "Без текста"
-    
+
     await bot.send_photo(chat_id=ADMIN_ID, photo=message.photo[-1].file_id, caption=text)
- 
+
     await bot.send_photo(chat_id=GROUP_ID, photo=message.photo[-1].file_id, caption=text)

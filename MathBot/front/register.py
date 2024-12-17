@@ -3,7 +3,7 @@ from aiogram.fsm.state import State, StatesGroup
 from aiogram.fsm.context import FSMContext
 from aiogram.filters import Command
 from aiogram.types import Message
-import back.db as db
+import MathBot.back.db as db
 
 
 class User(StatesGroup):
