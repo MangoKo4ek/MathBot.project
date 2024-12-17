@@ -1,11 +1,11 @@
 import asyncio
 import aiosqlite
 
-from MathBot.config import DB_PATH
+from config import DB_PATH
 
 
 async def init_db():
-    # Connect to the SQLite database (or create it if it doesn't exist)
+
     async with aiosqlite.connect(DB_PATH) as db:
         # Create a table
         await db.execute("""
@@ -21,11 +21,9 @@ async def init_db():
                 text TEXT               
             )
         """)
-        await db.commit()  # Commit the transaction
+        await db.commit()
 
-        # async with db.execute("SELECT id, message FROM greetings") as cursor:
-        #     async for row in cursor:
-        #         print(f"ID: {row[0]}, Message: {row[1]}")  # Print the result
+
 
 
 asyncio.run(init_db())
@@ -39,7 +37,6 @@ async def create_user(user_id, first_name):
 
 async def user_exists(user_id: int) -> bool:
     """
-    Проверяет, существует ли пользователь с заданным user_id в базе данных.
 
     :param user_id: ID пользователя для проверки.
     :return: True, если пользователь существует, иначе False.
